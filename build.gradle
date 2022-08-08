@@ -201,6 +201,14 @@ task functional(description: 'Runs the functional tests.') {
   dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
 }
 
+task runCrossBrowserTests(type: Exec, description: 'Runs ExpertUI cross brower tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:crossbrowser'
+}
+
+task crossbrowser(description: 'Runs crossbrowser tests.') {
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runCrossBrowserTests))
+}
+
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
 
 sonarqube {
