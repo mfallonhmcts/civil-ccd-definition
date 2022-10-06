@@ -39,7 +39,7 @@ function getBrowserConfig(browserGroup) {
 }
 
 const setupConfig = {
-  tests: './e2e/tests/*_test.js',
+  tests: './e2e/tests/**/*_test.js',
   output: `${process.cwd()}/${testConfig.TestOutputDir}`,
   helpers: {
     WebDriver: {
@@ -82,7 +82,9 @@ const setupConfig = {
   },
   include: {
     I: './e2e/steps_file.js',
-    api: './e2e/api/steps.js'
+    LRspec: './e2e/steps_file_LRspec.js',
+    api: './e2e/api/steps.js',
+    api_spec: './e2e/api/steps_LRspec.js'
   },
   mocha: {
     reporterOptions: {

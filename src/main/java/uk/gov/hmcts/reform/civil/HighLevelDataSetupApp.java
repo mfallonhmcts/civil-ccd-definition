@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
+import uk.gov.hmcts.befta.util.BeftaUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -21,8 +22,23 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("caseworker-civil-solicitor", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-staff", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-systemupdate", "PUBLIC"),
-        new CcdRoleConfig("caseworker-caa", "PUBLIC")
-
+        new CcdRoleConfig("caseworker-caa", "PUBLIC"),
+        new CcdRoleConfig("judge-profile", "PUBLIC"),
+        new CcdRoleConfig("basic-access", "PUBLIC"),
+        new CcdRoleConfig("GS_profile", "PUBLIC"),
+        new CcdRoleConfig("legal-adviser", "PUBLIC"),
+        new CcdRoleConfig("caseworker-ras-validation", "PUBLIC"),
+        new CcdRoleConfig("admin-access", "PUBLIC"),
+        new CcdRoleConfig("full-access", "PUBLIC"),
+        new CcdRoleConfig("hearing-schedule-access", "PUBLIC"),
+        new CcdRoleConfig("civil-administrator-standard", "PUBLIC"),
+        new CcdRoleConfig("civil-administrator-basic", "PUBLIC"),
+        new CcdRoleConfig("APP-SOL-UNSPEC-PROFILE", "PUBLIC"),
+        new CcdRoleConfig("APP-SOL-SPEC-PROFILE", "PUBLIC"),
+        new CcdRoleConfig("RES-SOL-ONE-UNSPEC-PROFILE", "PUBLIC"),
+        new CcdRoleConfig("RES-SOL-ONE-SPEC-PROFILE", "PUBLIC"),
+        new CcdRoleConfig("RES-SOL-TWO-UNSPEC-PROFILE", "PUBLIC"),
+        new CcdRoleConfig("RES-SOL-TWO-SPEC-PROFILE", "PUBLIC")
     };
 
     private final CcdEnvironment environment;
@@ -34,11 +50,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     public static void main(String[] args) throws Throwable {
         main(HighLevelDataSetupApp.class, args);
-    }
-
-    @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        return true;
     }
 
     @Override
@@ -61,5 +72,11 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     protected List<String> getAllDefinitionFilesToLoadAt(String definitionsPath) {
         String environmentName = environment.name().toLowerCase(Locale.UK);
         return List.of(String.format("build/ccd-release-config/civil-ccd-%s.xlsx", environmentName));
+    }
+
+    @Override
+    public void createRoleAssignments() {
+        // Do not create role assignments.
+        BeftaUtils.defaultLog("Will NOT create role assignments!");
     }
 }

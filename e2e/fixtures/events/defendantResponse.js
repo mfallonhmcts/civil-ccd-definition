@@ -1,16 +1,7 @@
-const { date, document, element, buildAddress } = require('../../api/dataHelper');
-
+const { date, element, buildAddress, listElement} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   valid: {
-    RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE'
-    },
-    Upload: {
-      respondent1ClaimResponseDocument: {
-        file: document('claimResponse.pdf')
-      }
-    },
-    ConfirmNameAddress: {},
     ConfirmDetails: {
       respondent1: {
         type: 'INDIVIDUAL',
@@ -21,10 +12,20 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-      },
-      solicitorReferences: {
-        applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference'
+      }
+    },
+    SingleResponse: {},
+    RespondentResponseType: {
+      respondent1ClaimResponseType: 'FULL_DEFENCE',
+      multiPartyResponseTypeFlags: 'FULL_DEFENCE'
+    },
+    Upload: {
+      respondent1ClaimResponseDocument: {
+        file: {
+          document_url: '${TEST_DOCUMENT_URL}',
+          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+          document_filename: '${TEST_DOCUMENT_FILENAME}'
+        }
       }
     },
     FileDirectionsQuestionnaire: {
@@ -73,6 +74,13 @@ module.exports = {
         ]
       }
     },
+    Language: {
+      respondent1DQLanguage: {
+        evidence: 'WELSH',
+        court: 'WELSH',
+        documents: 'WELSH'
+      }
+    },
     Hearing: {
       respondent1DQHearing: {
         hearingLength: 'MORE_THAN_DAY',
@@ -87,28 +95,36 @@ module.exports = {
       }
     },
     DraftDirections: {
-      respondent1DQDraftDirections: document('draftDirections.pdf')
+      respondent1DQDraftDirections: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      }
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        responseCourtCode: '343',
+        responseCourtLocations: {
+          list_items: [
+            listElement(config.defendantSelectedCourt)
+          ],
+          value: listElement(config.defendantSelectedCourt)
+        },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
       }
     },
     HearingSupport: {},
+    VulnerabilityQuestions: {
+      respondent1DQVulnerabilityQuestions: {
+        vulnerabilityAdjustmentsRequired: 'Yes',
+        vulnerabilityAdjustments: 'some reasons for vulnerability',
+      }
+    },
     FurtherInformation: {
       respondent1DQFurtherInformation: {
         futureApplications: 'Yes',
         otherInformationForJudge: 'Nope',
         reasonForFutureApplications: 'Nothing'
-      }
-    },
-    Language: {
-      respondent1DQLanguage: {
-        evidence: 'WELSH',
-        court: 'WELSH',
-        documents: 'WELSH'
       }
     },
     StatementOfTruth: {

@@ -91,6 +91,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_AGREED_EXTENSION_DATE_CC",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_ACKNOWLEDGEMENT_CC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -98,6 +104,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CC",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CC",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_DEFENDANT_RESPONSE_CC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
@@ -145,6 +163,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_PROCEEDS_IN_CASEMAN",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -182,6 +206,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDICIAL_REFERRAL",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

@@ -20,8 +20,8 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
+      await waitForFinishedBusinessProcess(caseId);
+      await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       this.start(event);
     }, locate('.govuk-heading-l'));
@@ -31,5 +31,10 @@ module.exports = {
     if (await I.hasSelector(this.fields.eventDropdown)) {
       throw new Error('Expected to have no events available');
     }
+  },
+
+  async assertEventsAvailable(events) {
+    await I.waitForElement(this.fields.eventDropdown);
+    events.forEach(event => I.see(event, this.fields.eventDropdown));
   }
 };

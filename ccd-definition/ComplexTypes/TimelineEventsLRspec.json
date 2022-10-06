@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "TimelineOfEvents",
+    "ListElementCode": "timelineDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date",
+    "HintText": "For example, 12 11 2007",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TimelineOfEvents",
+    "ListElementCode": "timelineDescription",
+    "FieldType": "TextArea",
+    "ElementLabel": "What happened",
+    "SecurityClassification": "Public"
+  }
+]
